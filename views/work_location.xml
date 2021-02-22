@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<flectra>
+
+    <record id="work_location_form" model="ir.ui.view">                                                               
+    <field name="name">Work.Location.form</field>
+    <field name="model">hr.work.location</field>
+    <field name="arch" type ="xml">
+    <form string="Work Locations">
+
+    <sheet>
+
+    
+        <group>
+            <field name="name"/>
+            <field name="short_leave">
+            <tree editable="bottom">
+                <field name="start_time" widget="float_time"/>
+                <field name="end_time" widget="float_time"/>
+                <field name="location_id" invisible ="1"/>
+            </tree>
+            </field>
+            
+        </group>
+
+    
+
+    </sheet>
+    </form>
+
+    </field>
+
+</record>
+
+<record id="work_location_tree" model="ir.ui.view">                                                               
+    <field name="name">work.location.tree</field>
+    <field name="model">hr.work.location</field>
+    <field name="arch" type ="xml">
+    <tree string="Letter Requests">
+
+    
+            <field name="name"/>
+        
+    </tree>
+
+</field>
+</record>  
+
+</flectra>
