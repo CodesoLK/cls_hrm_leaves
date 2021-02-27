@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+
+    <record model='ir.ui.view' id='hr_document_form_view1'>
+        <field name="name">hr.document.form</field>
+        <field name="model">hr.document</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="doc_attachment_id" widget="many2many_binary" class="oe_inline"/>
+                            <!-- <field name="employee_ref" invisible="1"/> -->
+                            
+                            
+                        </group>
+                        <group>
+                            <field name="issue_date"/>
+                            <field name="expiry_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model='ir.ui.view' id='employee_document_tree_view1'>
+        <field name="name">hr.document.tree</field>
+        <field name="model">hr.document</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="issue_date"/>
+                <field name="expiry_date"/>
+                
+            
+            </tree>
+        </field>
+    </record>
+
+    <!-- <record model="ir.ui.view" id="op_studnet_document_inherit_form_view1">
+        <field name="name">op.subject.form.view</field>
+        <field name="model">op.subject</field>
+        <field name="inherit_id" ref="openeducat_core.view_op_subject_form"/>
+        <field name="arch" type="xml">
+        <field name = "grade_weightage" position="after">
+
+        <br></br>
+        <br></br>
+        
+            <button class="oe_stat_button" name="document_view" type="object" icon="fa-list-ol" string="lectures">
+            </button>
+        
+        </field>
+        
+            
+        </field>
+    </record> -->
+
+    <record id="action_document_hr" model="ir.actions.act_window">
+            <field name="name">HR Documents</field>
+            <field name="res_model">hr.document</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="cls_hrm_leaves.employee_document_tree_view1"/>
+            
+            
+    </record>
+
+    <menuitem name="HR Documents"
+    id="cls_hrm_leaves.menu_hr_documents"
+    parent="hr.menu_human_resources_configuration"
+    action="action_document_hr"/>
+
+</flectra>

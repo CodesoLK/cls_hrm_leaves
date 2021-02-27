@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<flectra>
+
+<!-- tree view of the hr.applicant model -->
+<record id="hr_loan_transfer_to_guarantee_wizard" model="ir.ui.view">
+    <field name="name">loan.transfer.guarantee.wizard</field>
+    <field name="model">loan.transfer.guarantee.wizard</field>
+    <field name="arch" type="xml">
+    <form string="Loan Transfer">
+        <div>     
+            <group>
+                <field name="employee_id" />
+                <field name="pending_amount" />
+                <field name="no_of_installments" />
+            </group>              
+        </div>
+        
+        <group>
+            <group>
+                <field name="guarantee_one" />
+                <field name="pracent_guarant_one" />
+            </group>
+            <group>
+                <field name="guarantee_two" />
+                <field name="pracent_guarant_two" />
+            </group>
+        </group>
+        
+        <footer>
+            <button string="Transfer loans" name="create_loans_for_garantees" type="object" class="oe_highlight"/>
+        </footer>
+    </form>
+    </field>
+</record>
+
+</flectra>

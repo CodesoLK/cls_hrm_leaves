@@ -10,7 +10,7 @@
     <field name="department_id" position="after">
         <field name="sli" attrs="{'invisible': 1}"/>
         
-        <field name="start_time" attrs="{'invisible': [('sli','!=', True)], 'readonly':[('id', '>', 0)]}" widget="float_time"/>
+        <field name="start_time" attrs="{'invisible': 1, 'readonly':[('id', '>', 0)]}" widget="float_time"/>
         <!-- <field name="end_time" attrs="{'invisible': [('sli','!=', True)]}"  widget="float_time"/> -->
         
     </field>

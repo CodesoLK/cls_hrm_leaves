@@ -19,6 +19,14 @@
                 <field name="location_id" invisible ="1"/>
             </tree>
             </field>
+
+            <field name="half_day">
+            <tree editable="bottom">
+                <field name="start_time" widget="float_time"/>
+                <field name="end_time" widget="float_time"/>
+                <field name="location_id" invisible ="1"/>
+            </tree>
+            </field>
             
         </group>
 
