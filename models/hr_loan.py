@@ -76,6 +76,33 @@ class LoanAttributesModification(models.Model):
                 emp_guarantee_count -= 1
                 emp.write({'guarentee_count_total':emp_guarantee_count})
 
+        if vals['state'] == 'refuse':
+            employee =self.guarantee_one
+            emp = self.env['hr.employee'].search([('id', '=', employee.id)],limit=1)
+            emp_guarantee_count = emp.guarentee_count_total
+            emp_guarantee_count -= 1
+            emp.write({'guarentee_count_total':emp_guarantee_count})
+
+            employee =self.guarantee_two
+            emp = self.env['hr.employee'].search([('id', '=', employee.id)],limit=1)
+            emp_guarantee_count = emp.guarentee_count_total
+            emp_guarantee_count -= 1
+            emp.write({'guarentee_count_total':emp_guarantee_count})
+
+        
+        if vals['state'] == 'cancel':
+            employee =self.guarantee_one
+            emp = self.env['hr.employee'].search([('id', '=', employee.id)],limit=1)
+            emp_guarantee_count = emp.guarentee_count_total
+            emp_guarantee_count -= 1
+            emp.write({'guarentee_count_total':emp_guarantee_count})
+
+            employee =self.guarantee_two
+            emp = self.env['hr.employee'].search([('id', '=', employee.id)],limit=1)
+            emp_guarantee_count = emp.guarentee_count_total
+            emp_guarantee_count -= 1
+            emp.write({'guarentee_count_total':emp_guarantee_count})
+
         result = super(LoanAttributesModification,self).write(vals)
         return result
 

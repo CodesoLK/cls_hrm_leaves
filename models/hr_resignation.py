@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from flectra import models, fields, api
+from flectra import models, fields, api, _
+from flectra.exceptions import ValidationError
 
 
 
@@ -31,9 +32,25 @@ class HrResignation(models.Model):
       self.loan_balance = loan_balance
 
   
+  @api.multi
+  def approve_resignation(self):
+    for rec in self:
+      if not rec.approved_revealing_date:
+        raise ValidationError(_('Enter Approved Revealing Date'))
+      if rec.approved_revealing_date and rec.resign_confirm_date:
+        if rec.approved_revealing_date <= rec.resign_confirm_date:
+          raise ValidationError(_('Approved revealing date must be anterior to confirmed date'))
+        rec.state = 'approved'
 
-
-
+    if rec.employee_id:
+      employee = self.env['hr.employee'].search([('id', '=', rec.employee_id.id )])
+      employee.write({
+        'active':False,
+      })
+      contract = self.env['hr.contract'].search([('employee_id', '=', rec.employee_id.id)])
+      contract.write({
+        'state':'close',
+      })
 
 
 

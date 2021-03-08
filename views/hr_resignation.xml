@@ -10,11 +10,11 @@
                     
                 <xpath expr="//sheet" position="before">
                     <div class="alert alert-danger" role="alert" style="margin-bottom:1px;" attrs="{'invisible': [('loan_balance','=', 0)]}" >
-                    You have a pending Loan to settle   
+                    This Employee have a pending Loan to settle   
                     </div>
                 </xpath>
                 <xpath expr="//button[@name='confirm_resignation']" position="replace">  
-                    <button string="Confirm" type="object" name="confirm_resignation" states="draft" class="oe_highlight" attrs="{'invisible': [ ('loan_balance', '>', 0)]}"/>
+                    <button string="Confirm" type="object" name="confirm_resignation"  class="oe_highlight" attrs="{'invisible': ['|',('loan_balance', '!=', 0),('state', '!=', 'draft')]}"/>
                 </xpath>    
                 
                 <xpath expr="//field[@name='expected_revealing_date']" position="after">  

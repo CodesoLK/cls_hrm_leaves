@@ -9,8 +9,8 @@
     <field name="inherit_id" ref="ohrms_loan.hr_loan_form_view"/>
     <field name="arch" type="xml">
     <xpath expr="//header" position="inside">
-        <button name="loan_transfer_to_the_guarantee" type="object" class="oe_highlight" string="Loan transfer to guarantees" attrs="{'invisible':[('transfered_loan','=',True)]}" />
-    
+        <!-- <button name="loan_transfer_to_the_guarantee" type="object" class="oe_highlight" string="Loan transfer to guarantees" attrs="{'invisible':[('transfered_loan','=',True)]}" /> -->
+        <button name="loan_transfer_to_the_guarantee" type="object" class="oe_highlight" string="Loan transfer to guarantees" attrs="{'invisible':1}" />
     </xpath>
     <field name="treasury_account_id" position="after">
         <field name="guarantee_one" attrs="{'required':[('transfered_loan','=',False)]}"/>
