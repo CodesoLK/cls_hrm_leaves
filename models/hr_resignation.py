@@ -11,6 +11,8 @@ class HrResignation(models.Model):
 
   loan_balance = fields.Float("Loan Balance", compute="_generate_balance_loan")
   comments = fields.Text(string="Comments")
+  state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirm'), ('approved', 'Approved'), ('cancel', 'Cancel'),('rejected', 'Rejected')],
+                             string='Status', default='draft')
 
   @api.onchange('employee_id')
   def set_join_date(self):
