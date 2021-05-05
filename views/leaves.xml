@@ -17,7 +17,7 @@
 
     <field name="employee_id" position="after">
         <field name="short" invisible="1"/>
-        <field name="epf"/>
+        <!-- <field name="epf"/> -->
         <field name="shift" attrs="{'invisible':['|',('short', '!=', True),('type', '=', 'add')]}"/>
         
     </field>
@@ -26,7 +26,7 @@
     </field>
 </record>
 
-<record id="inherit_leave_tree_allo" model="ir.ui.view">
+<!-- <record id="inherit_leave_tree_allo" model="ir.ui.view">
     <field name="name">hr.leaves.tree.allocation.inherit</field>
     <field name="model">hr.holidays</field>
     <field name="inherit_id" ref="hr_holidays.view_holiday_allocation_tree"/> 
@@ -38,9 +38,9 @@
 
 
     </field>
-</record>
+</record> -->
 
-<record id="inherit_leave_tree_req" model="ir.ui.view">
+<!-- <record id="inherit_leave_tree_req" model="ir.ui.view">
     <field name="name">hr.leaves.tree.request.inherit</field>
     <field name="model">hr.holidays</field>
     <field name="inherit_id" ref="hr_holidays.view_holiday_simple"/> 
@@ -52,7 +52,7 @@
 
 
     </field>
-</record>
+</record> -->
 
 
 
