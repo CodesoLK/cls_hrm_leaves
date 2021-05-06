@@ -10,8 +10,8 @@ from flectra.exceptions import ValidationError
 #inheriting model
 class LoanAttributesModification(models.Model):
     _inherit = 'hr.loan'
-    guarantee_one = fields.Many2one('hr.employee', string="Guarantee One", domain=[('guarentee_count_total', '<',2 )])
-    guarantee_two = fields.Many2one('hr.employee', string="Guarantee Two",  domain=[('guarentee_count_total', '<', 2)])
+    guarantee_one = fields.Many2one('hr.employee', string="Guarantee One", domain=['|',('guarentee_count_total', '<',2 ),('guarentee_count_total', '=',False )])
+    guarantee_two = fields.Many2one('hr.employee', string="Guarantee Two",  domain=['|',('guarentee_count_total', '<',2 ),('guarentee_count_total', '=',False )])
     
     transfered_loan = fields.Boolean('Transfered Loan', default=False)
 
@@ -135,12 +135,17 @@ class LoanAttributesModification(models.Model):
     @api.onchange('guarantee_one')
     def onchange_gurantee_1(self):
         return {
-        'domain' : {'guarantee_two' : [('id', '!=', self.guarantee_one.id),('guarentee_count_total', '<',2 )],}
+        'domain' : {'guarantee_two' : ['|',('guarentee_count_total', '=',False ),('guarentee_count_total', '<',2 ),('id', '!=', self.guarantee_one.id)],}
         }
   
     @api.onchange('guarantee_two')
     def onchange_gurantee_2(self):
         return {
-        'domain' : {'guarantee_one' : [('id', '!=', self.guarantee_one.id),('guarentee_count_total', '<',2 )],}
+        'domain' : {'guarantee_one' : ['|',('guarentee_count_total', '=',False ),('guarentee_count_total', '<',2 ),('id', '!=', self.guarantee_two.id)],}
         }
+  
+
+
+
+
   
